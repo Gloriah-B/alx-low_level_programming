@@ -1,29 +1,28 @@
-#include "main.h"
-#include <unistd.h>
-/**
- * main - Entry
- *
- * Description: prints the first 50 Fibonacci numbers starting with 1 and 2 followed by new line
- *
- * Return: always 0 (success)
- */
+#include <stdio.h>
 
+/**
+ * main - Prints the add of the even-valued
+ * Description - fibonacci numbers.
+ *
+ * Return: Always 0.
+ */
 int main(void)
 {
-	int count;
-	unsigned long fib1 = 0, fib2 = 1, sum;
+	long int n1, n2, fn, afn;
 
-	for (count = 0; count < 50; count++)
+	n1 = 1;
+	n2 = 2;
+	fn = afn = 0;
+	while (fn <= 4000000)
 	{
-		sum = fib1 + fib2;
-		printf("%lu", sum);
-
-	fib1 = fib2;
-	fib2 = sum;
-	if (count == 49)
-		printf("\n");
-	else
-		printf(", ");
+		fn = n1 + n2;
+		n1 = n2;
+		n2 = fn;
+		if ((n1 % 2) == 0)
+		{
+			afn += n1;
+		}
 	}
+	printf("%ld\n", afn);
 	return (0);
 }
