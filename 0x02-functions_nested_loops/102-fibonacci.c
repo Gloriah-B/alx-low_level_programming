@@ -1,8 +1,9 @@
 #include "main.h"
+
 /**
  * main - Entry
  *
- * Description: prints first 50 fibonacci numbers starting with 1 and 2
+ * Description: prints the first 50 Fibonacci numbers starting with 1 and 2 followed by new line
  *
  * Return: always 0 (success)
  */
