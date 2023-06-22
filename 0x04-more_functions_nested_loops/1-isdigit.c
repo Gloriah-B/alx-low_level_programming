@@ -1,19 +1,16 @@
 #include "main.h"
-#include <stdio.h>
 
 /**
- * main - checks the digit.
+ * _isdigit - checks for digits 0 - 9
+ * @c: character to be checked
  *
- * Return: Always 0.
+ * Return: 0 or 1
  */
-int main(void)
+
+int _isdigit(int c)
 {
-	char c;
-
-	c = 'A';
-	printf("%c: %d\n", c, _isupper(c));
-	c = 'a';
-	printf("%c: %d\n", c, _isupper(c));
-
-	return (0);
+	if (c >= '0' && c <= '9')
+		return (1);
+	else
+		return (0);
 }
