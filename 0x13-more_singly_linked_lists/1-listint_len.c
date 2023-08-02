@@ -1,32 +1,21 @@
 #include <stdlib.h>
-#include <string.h>
 #include <stdio.h>
 #include "lists.h"
 
 /**
- * main - check the code
+ * listint_len - returns the number of elements in a linked lists
+ * @h: linked list of type listint_t to traverse
  *
- * Return: Always 0.
+ * Return: number of nodes
  */
-int main(void)
+size_t listint_len(const listint_t *h)
 {
-	listint_t *head;
-	listint_t *new;
-	listint_t hello = {8, NULL};
-	size_t n;
+	size_t nodes = 0;
 
-	head = &hello;
-	new = malloc(sizeof(listint_t))
-	if (new == NULL)
+	while (h)
 	{
-		printf("Error\n");
-		return (1);
+	nodes++;
+	h = h->next;
 	}
-	new->n = 9;
-	new->next = head;
-	head = new;
-	n = listint_len(head);
-	printf("-> %lu elements\n", n);
-	free(new);
-	return (0);
+return (nodes);
 }
