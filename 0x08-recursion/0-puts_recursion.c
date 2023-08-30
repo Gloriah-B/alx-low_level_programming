@@ -1,4 +1,4 @@
-#include <main.h>
+#include "main.h"
 
 /*
  * main - function prints a string followed by new line
