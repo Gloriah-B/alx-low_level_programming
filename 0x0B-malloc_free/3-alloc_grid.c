@@ -40,12 +40,12 @@ int **alloc_grid(int width, int height)
 return (w);
 }
 /**
- * free_grid - frees memory for allocated grid
+ * free_twod - frees memory for allocated grid
  * @grid: pointer to the grid
  * @height: grid height
  * Return: 0
  */
-void free_grid(int **grid, int height)
+void free_twod(int **grid, int height)
 
 {
 	int x;
