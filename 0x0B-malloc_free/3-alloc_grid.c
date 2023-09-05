@@ -39,4 +39,19 @@ int **alloc_grid(int width, int height)
 		}
 return (w);
 }
+/**
+ * free_grid - frees memory for allocated grid
+ * @grid: pointer to the grid
+ * @height: grid height
+ * Return: 0
+ */
+void free_grid(int **grid, int height)
 
+{
+	if (grid != NULL)
+	{
+		for (int x = 0; x < height; x++)
+			free(grid[x]);
+		free(grid);
+	}
+}
