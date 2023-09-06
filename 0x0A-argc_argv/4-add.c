@@ -2,6 +2,12 @@
 #include <stdlib.h>
 #include <ctype.h>
 
+/**
+ * validateInput - Check if a string contains only digits.
+ * @input: The input string to validate.
+ *
+ * Return: 1 if the string contains only digits, 0 otherwise.
+ */
 int validateInput(char *input)
 {
 	int j = 0;
