@@ -4,7 +4,7 @@
 /**
  * main - Entry point of the program
  *
- * This program multiplies two integers passed as command-line arguments and
+ * This program multiplies two numbers passed as command-line arguments and
  * prints the result followed by a new line. If it doesn't receive exactly two
  * arguments, it prints "Error", followed by a new line, and returns 1.
  *
@@ -30,4 +30,3 @@ int main(int argc, char *argv[])
 
 	return (0);
 }
-
