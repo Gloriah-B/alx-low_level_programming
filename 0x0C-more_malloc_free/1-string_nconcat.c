@@ -1,46 +1,41 @@
 #include <stdlib.h>
 
 /**
- * string_nconcat_custom - Concatenates two strings up to n bytes.
- * @str1: The first string.
- * @str2: The second string.
- * @n: The maximum number of bytes from str2 to concatenate.
+ * string_nconcat - Concatenates two strings up to n bytes.
+ * @s1: The first string.
+ * @s2: The second string.
+ * @n: The maximum number of bytes from s2 to concatenate.
  *
  * Return: A pointer to the concatenated string or NULL on failure.
  */
-char *string_nconcat_custom(char *str1, char *str2, unsigned int n)
+
+char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
 	char *result;
-	unsigned int len1, len2, result_len, i;
+	unsigned int s1_len = 0, s2_len = 0, result_len, i, j;
 
-	if (str1 == NULL)
-		str1 = "";
-	if (str2 == NULL)
-		str2 = "";
+	if (s1 == NULL)
+		s1 = "";
+	if (s2 == NULL)
+		s2 = "";
 
-	for (len1 = 0; str1[len1] != '\0'; len1++)
-		;
+	while (s1[s1_len])
+		s1_len++;
+	while (s2[s2_len])
+		s2_len++;
 
-	for (len2 = 0; str2[len2] != '\0'; len2++)
-		;
+	result_len = s1_len + (n >= s2_len ? s2_len : n);
 
-	if (n > len2)
-		n = len2;
-
-	result_len = len1 + n;
-
-	result = malloc(result_len + 1);
+	result = (char *)malloc((result_len + 1) * sizeof(char));
 
 	if (result == NULL)
 		return (NULL);
 
-	for (i = 0; i < result_len; i++)
-	{
-		if (i < len1)
-			result[i] = str1[i];
-		else
-			result[i] = str2[i - len1];
-	}
+	for (i = 0; i < s1_len; i++)
+		result[i] = s1[i];
+
+	for (j = 0; j < n && j < s2_len; j++, i++)
+		result[i] = s2[j];
 
 	result[i] = '\0';
 
