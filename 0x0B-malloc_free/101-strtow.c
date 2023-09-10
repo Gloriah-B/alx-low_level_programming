@@ -50,7 +50,7 @@ char **strtow(char *str)
 	return (NULL);
 	}
 
-	**words = (char **)malloc((num_words + 1) * sizeof(char *));
+	words = (char **)malloc((num_words + 1) * sizeof(char *));
 
 	if (words == NULL)
 	{
