@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "main.h"
 
 /**
  * argstostr - Concatenates all the arguments of the program.
@@ -50,6 +51,7 @@ char *argstostr(int ac, char **av)
  *
  * Return: 0 on success, 1 on failure.
  */
+
 int main(int argc, char *argv[])
 {
 	char *concatenated_args;
