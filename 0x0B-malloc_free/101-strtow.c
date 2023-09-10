@@ -9,7 +9,7 @@
  *
  * Return: 1 if the character is a whitespace character, 0 otherwise.
  */
-int is_whitespace(char c);
+int is_whitespace(char c)
 
 /**
  * Description - functio n implements count_words
@@ -18,7 +18,7 @@ int is_whitespace(char c);
  *
  * Return: The number of words in the string.
  */
-int count_words(char *str);
+int count_words(char *str)
 
 /**
  * strtow - Splits a string into words.
