@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
+#include "main.h"
 
 /**
  * is_whitespace - Checks if a character is a whitespace character.
@@ -42,6 +42,8 @@ char **strtow(char *str)
 	{
 	return (NULL);
 	}
+
+	char **words;
 
 	char **words = (char **)malloc((num_words + 1) * sizeof(char *));
 
