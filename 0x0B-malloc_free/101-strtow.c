@@ -43,26 +43,21 @@ char **strtow(char *str)
 
 	}
 
-	int num_words = count_words(str);
+	num_words = count_words(str);
 
 	if (num_words == 0)
 	{
 	return (NULL);
 	}
 
-	char **words;
-
-	char **words = (char **)malloc((num_words + 1) * sizeof(char *));
+	**words = (char **)malloc((num_words + 1) * sizeof(char *));
 
 	if (words == NULL)
 	{
 	return (NULL);
 	}
 
-	int word_index = 0;
-	int word_length = 0;
-
-	for (int i = 0; str[i] != '\0'; i++)
+	for (i = 0; str[i] != '\0'; i++)
 	{
 	if (!is_whitespace(str[i]))
 	{
@@ -80,7 +75,7 @@ char **strtow(char *str)
 
 	if (words[word_index] == NULL)
 	{
-		for (int j = 0; j < word_index; j++)
+		for (j = 0; j < word_index; j++)
 		{
 			free(words[j]);
 		}
