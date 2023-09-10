@@ -3,7 +3,8 @@
 #include "main.h"
 
 /**
- * is_whitespace - Checks if a character is a whitespace character.
+ * Description - function implements is_whitespace function
+ * @is_whitespace - Checks if a character is a whitespace character.
  * @c: The character to check.
  *
  * Return: 1 if the character is a whitespace character, 0 otherwise.
@@ -11,7 +12,8 @@
 int is_whitespace(char c);
 
 /**
- * count_words - Counts the number of words in a string.
+ * Description - functio n implements count_words
+ *@count_words - Counts the number of words in a string.
  * @str: The input string.
  *
  * Return: The number of words in the string.
