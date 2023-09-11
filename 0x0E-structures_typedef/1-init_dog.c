@@ -14,14 +14,7 @@ void init_dog(struct dog *d, char *name, float age, char *owner)
 	d->name = strdup(name);
 	d->age = age;
 	d->owner = strdup(owner);
-}
 
-/**
- * main - Entry point of the program.
- * Return: Always 0 (Success).
- */
-int main(void)
-{
 	struct dog myDog;
 
 	init_dog(&myDog, "Buddy", 3.5, "John Smith");
