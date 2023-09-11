@@ -1,7 +1,7 @@
-#ifndef MYHEADER_H
-#define MYHEADER_H
+#ifndef PI_H
+#define PI_H
 
-#define MY HEADER 3.14159265359
+#define PI 3.14159265359
 
 #endif
 
