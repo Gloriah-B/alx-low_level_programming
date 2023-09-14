@@ -5,6 +5,10 @@
 /**
  * print_all - Prints anything based on a format string.
  * @format: A list of types of arguments passed to the function
+ *   c: char
+ *   i: integer
+ *   f: float
+ *   s: char * (if the string is NULL, print (nil) instead)
  */
 void print_all(const char * const format, ...)
 {
@@ -39,6 +43,9 @@ void print_all(const char * const format, ...)
 					printf("%s%s", sep, str);
 				}
 				break;
+			default:
+				i++;
+				continue;
 		}
 		i++;
 	}
