@@ -1,11 +1,18 @@
+#include "main.h"
 /**
- * _strchr - function prints a string of characters
- * @s: pointer to the string
- * @c: the character string
+ * _strchr - Entry point
+ * @s: input
+ * @c: input
  * Return: 0
  */
-char *_strchr(char *s, char c);
+char *_strchr(char *s, char c)
 {
+	int i = 0;
+
+	for (; s[i] >= '\0'; i++)
+	{
+		if (s[i] == c)
+			return (&s[i]);
+	}
 	return (0);
 }
-

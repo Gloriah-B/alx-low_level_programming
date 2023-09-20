@@ -1,11 +1,39 @@
+#include "main.h"
+
 /**
- * _strncat - function cuts a string
- * @dest: resulting string
- * @src: string form which it is being copied from
- * @n: pointer to the memory area
- * Return:0
+ * _strncat - function concatenate two strings
+ * using at most n bytes from src
+ * @dest: entered value
+ * @src: entered value
+ * @n: entered value
+ *
+ * Return: dest
  */
-char *_strncat(char *dest, char *src, int n);
+char *_strncat(char *dest, char *src, int n)
 {
-	return (0);
+	int a;
+	int b;
+
+	a = 0;
+
+	while (dest[a] != '\0')
+
+	{
+		a++;
+	}
+
+	b = 0;
+
+	while (b < n && src[b] != '\0')
+
+	{
+		dest[a] = src[b];
+
+		a++;
+		b++;
+	}
+
+	dest[a] = '\0';
+
+	return (dest);
 }

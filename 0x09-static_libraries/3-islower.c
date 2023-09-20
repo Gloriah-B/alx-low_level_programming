@@ -1,9 +1,10 @@
+#include "main.h"
 /**
- * _islower - function printes only the lower case
- * @c: pointer to an integer
- * Return: 0
+ * _islower - checks for lowercase character
+ * @c: the character to check
+ * Return: 1 if c is lowercase, 0 otherwise
  */
-int _islower(int c);
+int _islower(int c)
 {
-	return (0);
+	return (c >= 'a' && c <= 'z');
 }

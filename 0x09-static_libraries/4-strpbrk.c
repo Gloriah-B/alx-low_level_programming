@@ -1,10 +1,23 @@
+#include "main.h"
 /**
- * _strpbrk - function prints astring form back
- * @s: poinetr to a string
- * @accept: pointer to the resulting string
- * Return: 0
+ * _strpbrk - Entry point
+ * @s: input
+ * @accept: input
+ * Return: Always 0 (Success)
  */
-char *_strpbrk(char *s, char *accept);
+char *_strpbrk(char *s, char *accept)
 {
-	return (0);
+	int k;
+
+	while (*s)
+	{
+		for (k = 0; accept[k]; k++)
+		{
+			if (*s == accept[k])
+				return (s);
+		}
+	s++;
+		}
+
+	return ('\0');
 }

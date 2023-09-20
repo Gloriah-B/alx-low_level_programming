@@ -1,11 +1,32 @@
+#include "main.h"
+
 /**
- * _memset - function fills memory with a constant byte
- * @s: pointer to the memory area to be filled
- * @b: pointer to chrter to fill the memory with
- * @n: number of bytes to be filled
- * Return: memory area s on success
+ *  _strcat - function that concatenates two strings
+ *  @dest: entered value
+ *  @src: entered value
+ *
+ *  Return: void
  */
-char *_memset(char *s, char b, unsigned int n);
+
+char *_strcat(char *dest, char *src)
 {
-	Return (0);
+	int a;
+	int b;
+
+	a = 0;
+
+	while (dest[a] != '\0')
+
+	{
+		a++;
+	}
+	b = 0;
+	while (src[b] != '\0')
+	{
+		dest[a] = src[b];
+		a++;
+		b++;
+	}
+	dest[a] = '\0';
+	return (dest);
 }

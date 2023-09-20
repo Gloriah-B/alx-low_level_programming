@@ -1,10 +1,28 @@
+#include "main.h"
 /**
- * _strspn -function sipns the character s
- * @s: the character to spin
- * @accept: accepts the characters to spin
- * Return: 0
+ * _strspn - Entry point
+ * @s: input
+ * @accept: input
+ * Return: Always 0 (Success)
  */
-unsigned int _strspn(char *s, char *accept);
+unsigned int _strspn(char *s, char *accept)
 {
-	return (0);
+	unsigned int n = 0;
+	int r;
+
+	while (*s)
+	{
+		for (r = 0; accept[r]; r++)
+		{
+			if (*s == accept[r])
+			{
+				n++;
+				break;
+			}
+			else if (accept[r + 1] == '\0')
+				return (n);
+		}
+		s++;
+	}
+	return (n);
 }

@@ -1,10 +1,24 @@
+#include "main.h"
 /**
- * _strchr - function prints a string of characters
- * @s: pointer to acharacter
- * @c: pointer to the resulting string
- * Return: 0
+ * _strstr - Entry point
+ * @haystack: input
+ * @needle: input
+ * Return: Always 0 (Success)
  */
-char *_strchr(char *s, char c);
+char *_strstr(char *haystack, char *needle)
 {
+	for (; *haystack != '\0'; haystack++)
+	{
+		char *l = haystack;
+		char *p = needle;
+
+		while (*l == *p && *p != '\0')
+		{
+			l++;
+			p++;
+		}
+		if (*p == '\0')
+			return (haystack);
+	}
 	return (0);
 }
