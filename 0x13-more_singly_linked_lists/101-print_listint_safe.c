@@ -19,15 +19,8 @@ size_t print_listint_safe(const listint_t *head)
 		printf("[%p] %d\n", (void *)current, current->n);
 		count++;
 
-		if (current <= current->next)
-		{
-			fprintf(stderr, "Linked list loop detected\n");
-			exit(98);
-		}
-
 		current = current->next;
 	}
 
 	return (count);
 }
-
