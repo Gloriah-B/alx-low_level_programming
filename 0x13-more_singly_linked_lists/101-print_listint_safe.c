@@ -22,7 +22,7 @@ size_t print_listint_safe(const listint_t *head)
 
 		if (slow_ptr == fast_ptr)
 		{
-			printf("Linkedlist is a loop\n");
+			printf("Linked list is a loop\n");
 			exit(98);
 		}
 
