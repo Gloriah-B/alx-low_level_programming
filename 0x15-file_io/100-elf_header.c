@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <elf.h>
+#include "main.h"
 
 void print_elf_header_info(Elf64_Ehdr *elf_header);
 
