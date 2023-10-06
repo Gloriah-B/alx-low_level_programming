@@ -3,11 +3,26 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <elf.h>
-#include "main.h"
+#include <sys/types.h>
+#include <sys/stat.h>
+
+/**
+ * print_elf_header_info - Print information from the ELF header.
+ * @elf_header: A pointer to the ELF header structure.
+ */
+
 
 void print_elf_header_info(Elf64_Ehdr *elf_header);
 
-int main(int argc, char *argv[]);
+/**
+ * main - Entry point of the program.
+ * @argc: The number of command-line arguments.
+ * @argv: An array of strings containing the arguments.
+ *
+ * Return: 0 on success, 98 on error.
+ */
+
+int main(int argc, char *argv[])
 {
 	if (argc != 2)
 	{
@@ -42,8 +57,11 @@ int main(int argc, char *argv[]);
 	close(fd);
 	return (0);
 }
-
-void print_elf_header_info(Elf64_Ehdr *elf_header);
+/**
+ * * print_elf_header_info - Print information from the ELF header.
+ * @elf_header: A pointer to the ELF header structure.
+ */
+void print_elf_header_info(Elf64_Ehdr *elf_header)
 {
 	printf("  Magic:   ");
 	for (int i = 0; i < EI_NIDENT; i++)
