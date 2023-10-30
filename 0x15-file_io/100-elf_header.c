@@ -17,6 +17,10 @@ void printFileType(unsigned int e_type, unsigned char *e_ident);
 void printEntryPoint(unsigned long int e_entry, unsigned char *e_ident);
 void closeFile(int fileDescriptor);
 
+/**
+ * verifyElfHeader - Verify that the file is an ELF file.
+ * @e_ident: A pointer to an array containing the ELF magic numbers.
+ */
 void verifyElfHeader(unsigned char *e_ident)
 {
 	int index;
@@ -34,6 +38,10 @@ void verifyElfHeader(unsigned char *e_ident)
 	}
 }
 
+/**
+ * printMagicNumbers - Prints the magic numbers of an ELF header.
+ * @e_ident: A pointer to an array containing the ELF magic numbers.
+ */
 void printMagicNumbers(unsigned char *e_ident)
 {
 	int index;
@@ -50,7 +58,10 @@ void printMagicNumbers(unsigned char *e_ident)
 			printf(" ");
 	}
 }
-
+/**
+ * printHeaderClass - Prints the class of an ELF header.
+ * @e_ident: A pointer to an array containing the ELF class.
+ */
 void printHeaderClass(unsigned char *e_ident)
 {
 	printf("Class:  ");
@@ -70,7 +81,10 @@ void printHeaderClass(unsigned char *e_ident)
 		printf("<unknown: %x>\n", e_ident[EI_CLASS]);
 	}
 }
-
+/**
+ * printDataFormat - Prints the data format of an ELF header.
+ * @e_ident: A pointer to an array containing the data format.
+ */
 void printDataFormat(unsigned char *e_ident)
 {
 	printf("Data:  ");
@@ -90,7 +104,10 @@ void printDataFormat(unsigned char *e_ident)
 		printf("<unknown: %x>\n", e_ident[EI_DATA]);
 	}
 }
-
+/**
+ * printHeaderVersion - Prints the version of an ELF header.
+ * @e_ident: A pointer to an array containing the ELF version.
+ */
 void printHeaderVersion(unsigned char *e_ident)
 {
 	printf("Version:  %d", e_ident[EI_VERSION]);
@@ -105,7 +122,10 @@ void printHeaderVersion(unsigned char *e_ident)
 		break;
 	}
 }
-
+/**
+ * printOSABI - Prints the OS/ABI of an ELF header.
+ * @e_ident: A pointer to an array containing the ELF version.
+ */
 void printOSABI(unsigned char *e_ident)
 {
 	printf("OS/ABI:  ");
@@ -146,12 +166,19 @@ void printOSABI(unsigned char *e_ident)
 		printf("<unknown: %x>\n", e_ident[EI_OSABI]);
 	}
 }
-
+/**
+ * printABIVersion - Prints the ABI version of an ELF header.
+ * @e_ident: A pointer to an array containing the ELF ABI version.
+ */
 void printABIVersion(unsigned char *e_ident)
 {
 	printf("ABI Version:  %d\n", e_ident[EI_ABIVERSION]);
 }
-
+/**
+ * printFileType - Prints the type of an ELF header.
+ * @e_type: The ELF type.
+ * @e_ident: A pointer to an array containing the ELF class.
+ */
 void printFileType(unsigned int e_type, unsigned char *e_ident)
 {
 	if (e_ident[EI_DATA] == ELFDATA2MSB)
@@ -180,7 +207,11 @@ void printFileType(unsigned int e_type, unsigned char *e_ident)
 		printf("<unknown: %x>\n", e_type);
 	}
 }
-
+/**
+ * printEntryPoint - Prints the entry point of an ELF header.
+ * @e_entry: The address of the ELF entry point.
+ * @e_ident: A pointer to an array containing the ELF class.
+ */
 void printEntryPoint(unsigned long int e_entry, unsigned char *e_ident)
 {
 	printf("Entry point address:  ");
@@ -197,7 +228,10 @@ void printEntryPoint(unsigned long int e_entry, unsigned char *e_ident)
 	else
 		printf("%#lx\n", e_entry);
 }
-
+/**
+ * closeFile - Closes the ELF file.
+ * @fileDescriptor: The file descriptor of the ELF file.
+ */
 void closeFile(int fileDescriptor)
 {
 	if (close(fileDescriptor) == -1)
@@ -206,7 +240,13 @@ void closeFile(int fileDescriptor)
 		exit(98);
 	}
 }
-
+/**
+ * main - Displays information from the ELF header of a given file.
+ * @argc: The number of arguments passed to the program (unused).
+ * @argv: An array of pointers to the program's command-line arguments.
+ * Return: 0 on successful execution, 98 on error (e.g., file not found or
+ * not a valid ELF file).
+ */
 int main(int __attribute__((__unused__)) argc, char *argv[])
 {
 	Elf64_Ehdr *header;
