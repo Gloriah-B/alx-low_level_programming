@@ -1,51 +1,29 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include "hash_tables.h"
 
-#define TABLE_SIZE 100
-
-Node *createNode(int key, int value)
-{
-	Node *newNode = (Node *)malloc(sizeof(Node));
-
-	if (newNode == NULL)
-	{
-		printf("Memory allocation failed!\n");
-		return (NULL);
-	}
-	newNode->key = key;
-	newNode->value = value;
-	newNode->next = NULL;
-	return (newNode);
-}
 /**
  * hash_table_create - creates a hash table
  * @size: size of the hash table
  *
  * Return: pointer to hash table
  */
+
 hash_table_t *hash_table_create(unsigned long int size)
 {
-	hash_table_t *newTable = (hash_table_t *)malloc(sizeof(hash_table_t));
+	hash_table_t *table;
 
-	if (newTable == NULL)
+	if (size == 0)
+		return (NULL);
+
+	table = calloc(1, sizeof(hash_table_t));
+	if (table == NULL)
+		return (NULL);
+
+	table->size = size;
+	table->array = calloc(size, sizeof(hash_node_t *));
+	if (table->array == NULL)
 	{
-		printf("Memory allocation failed!\n");
+		free(table);
 		return (NULL);
 	}
-
-	newTable->size = size;
-	newTable->array = (Node **)malloc(size * sizeof(Node *));
-	if (newTable->array == NULL)
-	{
-		printf("Memory allocation failed!\n");
-		free(newTable);
-		return (NULL);
-	}
-
-	for (unsigned long int i = 0; i < size; ++i)
-	{
-		newTable->array[i] = NULL;
-	}
-
-	return (newTable);
+	return (table);
 }
