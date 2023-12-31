@@ -1,93 +1,91 @@
 #include "hash_tables.h"
-#include <stdlib.h>
-#include <string.h>
 
 /**
- * create_node - Creates a new hash node
- * @key: The key to add
- * @value: The value associated with the key
+ * create_node - creates a new hash node
+ * @key: key to add the element
+ * @value: value to add the element
  *
- * Return: The newly created node or NULL on failure
+ * Return: newly created node if successful, NULL otherwise
  */
-static hash_node_t *create_node(const char *key, const char *value)
-{
-	hash_node_t *new_node = malloc(sizeof(hash_node_t));
+static hash_node_t *create_node(const char *key, const char *value) {
+    hash_node_t *new_node = calloc(1, sizeof(hash_node_t));
+    if (!new_node)
+        return NULL;
 
-	if (new_node == NULL)
-		return (NULL);
+    new_node->key = strdup(key);
+    if (!new_node->key) {
+        free(new_node);
+        return NULL;
+    }
 
-	new_node->key = strdup(key);
-	if (new_node->key == NULL)
-	{
-		free(new_node);
-		return (NULL);
-	}
+    new_node->value = strdup(value);
+    if (!new_node->value) {
+        free(new_node->key);
+        free(new_node);
+        return NULL;
+    }
 
-	new_node->value = strdup(value);
-	if (new_node->value == NULL)
-	{
-		free(new_node->key);
-		free(new_node);
-		return (NULL);
-	}
-
-	new_node->next = NULL;
-	return (new_node);
+    new_node->next = NULL;
+    return new_node;
 }
 
 /**
- * update_node_value - Updates the value of an existing node
- * @node: The node to update
- * @value: The new value to set
- *
- * Return: 1 on success, 0 on failure
- */
-static int update_node_value(hash_node_t *node, const char *value)
-{
-	char *new_value = strdup(value);
-
-	if (new_value == NULL)
-		return (0);
-
-	free(node->value);
-	node->value = new_value;
-	return (1);
-}
-
-/**
- * hash_table_set - Adds an element to the hash table
- * @ht: The hash table to modify
- * @key: The key to add or update
- * @value: The value associated with the key
+ * update_or_create_node - updates or creates a node in the hash table
+ * @ht: pointer to hash table
+ * @index: index to add the element
+ * @key: key to add the element
+ * @value: value to add the element
  *
  * Return: 1 if successful, 0 otherwise
  */
-int hash_table_set(hash_table_t *ht, const char *key, const char *value)
+static int update_or_create_node(hash_table_t *ht, unsigned long int index, const char *key, const char *value) 
 {
-	unsigned long int index;
-	hash_node_t *new_node, *temp;
+	hash_node_t *bucket = ht->array[index];
 
-	if (ht == NULL || key == NULL || *key == '\0')
-		return (0);
+    while (bucket) {
+        if (!strcmp(key, bucket->key)) {
+            free(bucket->value);
+            bucket->value = strdup(value);
+            if (!bucket->value)
+                return 0;
+            return 1;
+        }
+        bucket = bucket->next;
+    }
 
-	index = key_index((const unsigned char *)key, ht->size);
-	temp = ht->array[index];
+    hash_node_t *new_node = create_node(key, value);
+    if (!new_node)
+        return 0;
 
-	while (temp != NULL)
-	{
-		if (strcmp(temp->key, key) == 0)
-			return (update_node_value(temp, value));
-
-		temp = temp->next;
-	}
-
-	new_node = create_node(key, value);
-	if (new_node == NULL)
-		return (0);
-
-	new_node->next = ht->array[index];
-	ht->array[index] = new_node;
-
-	return (1);
+    new_node->next = ht->array[index];
+    ht->array[index] = new_node;
+    return 1;
 }
 
+/**
+ * hash_table_set - function that adds an element to the hash table
+ * @ht: pointer to hash table
+ * @key: key to add the element
+ * @value: value to add the element
+ *
+ * Return: 1 if it succeeded, 0 otherwise
+ */
+int hash_table_set(hash_table_t *ht, const char *key, const char *value) {
+    unsigned long int index = 0;
+
+    if (!ht || !key || !*key || !value)
+        return 0;
+
+    index = key_index((const unsigned char *)key, ht->size);
+
+    if (!ht->array[index]) {
+        hash_node_t *new_node = create_node(key, value);
+        if (!new_node)
+            return 0;
+
+        ht->array[index] = new_node;
+        return 1;
+    }
+
+    return update_or_create_node(ht, index, key, value);
+}
