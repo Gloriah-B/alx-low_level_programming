@@ -19,7 +19,7 @@ def island_perimeter(grid):
 
     if width == 0 or height == 0:
         return 0  # Empty grid or no island
-    
+
     for i in range(height):
         for j in range(width):
             if grid[i][j] == 1:
