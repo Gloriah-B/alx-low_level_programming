@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include "search_algos.h"
 
 /**
@@ -16,7 +15,7 @@ int binary_search(int *array, size_t size, int value)
 {
 	size_t left = 0, right = size - 1, mid, i;
 
-	if (array == NULL)
+	if (array == NULL || size == 0)
 		return (-1);
 
 	while (left <= right)
